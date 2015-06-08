@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Xdr on 6/4/15.
@@ -39,20 +41,20 @@ public class Helper {
         if(!caseSensitive){
             text = text.toLowerCase();
         }
-        while (text.contains(word)){
+        Pattern p = Pattern.compile(word);
+        Matcher m = p.matcher(text);
+        while (m.find()) {
             count++;
-            text = text.substring(text.indexOf(word) + word.length());
         }
-        System.out.println(count);
         return count;
     }
 
     public void getCount(){
 //        get all "banana" words from whole page
         WebElement body = driver.findElement(By.tagName("body"));
-        countWords("banana",body,false);
+        System.out.println("Number of 'banana' words on page: " + countWords("banana", body, false));
 //        get all "banana" words from web-page search results
         WebElement searchRslts = driver.findElement(By.cssSelector("div.l-web-results.web-results.content-mid"));
-        countWords("banana", searchRslts,false);
+        System.out.println("Number of 'banana' words on webresults: "+countWords("banana", searchRslts, false));
     }
 }
