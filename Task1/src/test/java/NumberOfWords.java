@@ -2,13 +2,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Created by Xdr on 6/4/15.
  */
 
 
-public class Test {
+public class NumberOfWords {
     private WebDriver driver;
     private Helper helper;
 
@@ -18,7 +19,7 @@ public class Test {
         helper = Helper.setDriver(driver);
     }
 
-    @org.testng.annotations.Test
+    @Test
     public void search() {
         helper.enterThePage();
         helper.searchText("Banana");
