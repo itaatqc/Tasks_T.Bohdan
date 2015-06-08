@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
+
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +40,7 @@ public class Helper {
     public int countWords(String word, WebElement element, boolean caseSensitive) {
         int count = 0;
         String text = element.getText();
-        if(!caseSensitive){
+        if (!caseSensitive) {
             text = text.toLowerCase();
         }
         Pattern p = Pattern.compile(word);
@@ -49,12 +51,14 @@ public class Helper {
         return count;
     }
 
-    public void getCount(){
+    public void getCount() {
 //        get all "banana" words from whole page
         WebElement body = driver.findElement(By.tagName("body"));
-        System.out.println("Number of 'banana' words on page: " + countWords("banana", body, false));
+        int wordsOnPage = countWords("banana", body, false);
+        Reporter.log("Number of 'banana' words on page: " + wordsOnPage,true);
 //        get all "banana" words from web-page search results
         WebElement searchRslts = driver.findElement(By.cssSelector("div.l-web-results.web-results.content-mid"));
-        System.out.println("Number of 'banana' words on webresults: "+countWords("banana", searchRslts, false));
+        int wordsOnWebResults = countWords("banana", searchRslts, false);
+        Reporter.log("Number of 'banana' words on webresults: " + wordsOnWebResults,true);
     }
 }
