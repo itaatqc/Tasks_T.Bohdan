@@ -15,7 +15,7 @@ hs_err_pid*
 *.[oa]
 
 log/
-/.settings/
+.settings/
 target/
 test-output/
 .classpath

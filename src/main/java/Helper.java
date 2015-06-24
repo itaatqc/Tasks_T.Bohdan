@@ -29,6 +29,7 @@ public class Helper {
 
     public void enterThePage() {
         driver.get("http://www.ask.com/");
+        helperLogger.info("page loaded");
     }
 
     public void searchText(String text) {
