@@ -37,12 +37,14 @@ public class Helper {
         driver.findElement(By.id("sbut")).click();
     }
 
-    public void getTextFromPage() {
-        getCount();
-//        TODO log4j
-        System.out.println();
-    }
-
+    /**
+     * Get number of words in specified WebElement.
+     *
+     * @param word          word to search for.
+     * @param element       element to search in.
+     * @param caseSensitive true if case sensitive search, false if case insensitive search.
+     * @return number of specified words in WebElement.
+     */
     public int countWords(String word, WebElement element, boolean caseSensitive) {
         int count = 0;
         String text = element.getText();
@@ -57,7 +59,9 @@ public class Helper {
         return count;
     }
 
-    //    TODO javadocs, compile to html page
+    /**
+     * Get count of 'banana' words on page and on search results
+     */
     public void getCount() {
 //        get all "banana" words from whole page
         WebElement body = driver.findElement(By.tagName("body"));

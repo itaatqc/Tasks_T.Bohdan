@@ -22,7 +22,7 @@ public class NumberOfWords {
     public void search() {
         helper.enterThePage();
         helper.searchText("Banana");
-        helper.getTextFromPage();
+        helper.getCount();
     }
 
     @AfterMethod
